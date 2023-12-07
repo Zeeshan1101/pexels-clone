@@ -2,16 +2,22 @@
 
 import Image from "next/image";
 import {useRef, useState} from "react";
+import {useRouter} from "next/navigation";
 
 export default function ImageLoad({photo}: { photo: any }) {
+    const router = useRouter();
+
     const [loading, setLoading] = useState(true)
 
 
     const imageRef = useRef<HTMLImageElement | null>(null)
 
-    return <div
+    return <button
         className='relative break-inside mb-5 transition-all'
         key={photo.id}
+        onClick={() => {
+            router.push(photo.src.original)
+        }}
     >
         {loading ? <div className="grid place-items-center w-full h-96 bg-gray-500 text-slate-100 shadow-xl"
         >Loading...</div> : (<>
@@ -35,5 +41,5 @@ export default function ImageLoad({photo}: { photo: any }) {
                 setLoading(false)
             }}
         />
-    </div>
+    </button>
 }

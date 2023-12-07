@@ -12,8 +12,8 @@ export default function ImageLoad({photo}: { photo: any }) {
 
     const imageRef = useRef<HTMLImageElement | null>(null)
 
-    return <button
-        className='relative break-inside mb-5 transition-all'
+    return <div
+        className='relative break-inside mb-5 transition-all cursor-pointer'
         key={photo.id}
         onClick={() => {
             router.push(photo.src.original)
@@ -41,5 +41,5 @@ export default function ImageLoad({photo}: { photo: any }) {
                 setLoading(false)
             }}
         />
-    </button>
+    </div>
 }

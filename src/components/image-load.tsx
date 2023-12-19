@@ -1,45 +1,53 @@
 "use client";
 
 import Image from "next/image";
-import {useRef, useState} from "react";
-import {useRouter} from "next/navigation";
+import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function ImageLoad({photo}: { photo: any }) {
+export default function ImageLoad({ photo }: { photo: any }) {
     const router = useRouter();
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
 
+    const imageRef = useRef<HTMLImageElement | null>(null);
 
-    const imageRef = useRef<HTMLImageElement | null>(null)
-
-    return <div
-        className='relative break-inside mb-5 transition-all cursor-pointer'
-        key={photo.id}
-        onClick={() => {
-            router.push(photo.src.original)
-        }}
-    >
-        {loading ? <div className="grid place-items-center w-full h-96 bg-gray-500 text-slate-100 shadow-xl"
-        >Loading...</div> : (<>
-            <div className="relative ">
-                <Image className='w-full h-full images min-h-[8rem]' src={photo.src.original} alt={photo.alt}
-                       height={imageRef.current?.naturalHeight} width={imageRef.current?.naturalWidth}
-                       priority={true}
-                />
-            </div>
-        </>)}
-        <Image
-            className='w-full h-full blur-lg absolute top-0 -z-10'
-            src={photo.src.original}
-            alt={photo.alt}
-            style={{opacity: loading ? 0 : 1}}
-            fill
-            sizes="100%"
-            ref={imageRef}
-            priority={false}
-            onLoad={(e) => {
-                setLoading(false)
+    return (
+        <div
+            className="break-inside relative mb-5 cursor-pointer transition-all"
+            key={photo.id}
+            onClick={() => {
+                router.push(photo.src.original);
             }}
-        />
-    </div>
+        >
+            {loading ? (
+                <div className="h-96 w-full animate-pulse bg-gray-400 text-slate-100"></div>
+            ) : (
+                <>
+                    <div className="relative ">
+                        <Image
+                            className="images h-full min-h-[8rem] w-full"
+                            src={photo.src.original}
+                            alt={photo.alt}
+                            height={imageRef.current?.naturalHeight}
+                            width={imageRef.current?.naturalWidth}
+                            priority={true}
+                        />
+                    </div>
+                </>
+            )}
+            <Image
+                className="absolute top-0 -z-10 h-full w-full blur-lg"
+                src={photo.src.original}
+                alt={photo.alt}
+                style={{ opacity: loading ? 0 : 1 }}
+                fill
+                sizes="100%"
+                ref={imageRef}
+                priority={false}
+                onLoad={(e) => {
+                    setLoading(false);
+                }}
+            />
+        </div>
+    );
 }

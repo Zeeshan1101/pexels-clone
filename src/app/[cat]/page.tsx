@@ -39,7 +39,7 @@ export default async function Page({
     if (!params.cat) notFound();
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between gap-10 p-[--padding-x]  [--padding-x:3rem] sm:[--padding-x:5rem] md:gap-20 md:[--padding-x:5rem] lg:[--padding-x:8rem] ">
+        <main className="flex min-h-screen flex-col items-center justify-between gap-10 p-[--padding-x]  [--padding-x:2rem] sm:[--padding-x:5rem] md:gap-20 md:[--padding-x:5rem] lg:[--padding-x:8rem] ">
             <SearchSection page={parseInt(searchParams.page) || 1}>
                 <SearchBar defaultValue={params.cat.replaceAll("%20", " ")} />
             </SearchSection>

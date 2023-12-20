@@ -14,13 +14,13 @@ const SearchBar = ({ defaultValue }: { defaultValue?: string }) => {
                 if (!search) return;
                 router.push(`/${search}`);
             }}
-            className="flex h-14 w-3/4 items-center justify-center rounded-full bg-white px-4 text-gray-500 transition-all duration-100 focus-within:border-2 focus-within:border-gray-500 md:w-2/3 lg:w-1/2"
+            className="order-1 col-span-2  flex h-14 w-full items-center justify-center rounded-full bg-white px-4 text-gray-500 transition-all duration-100 focus-within:border-2 focus-within:border-gray-500 md:order-2 md:w-2/3 lg:w-1/2"
         >
             <input
                 type="text"
                 name="search"
                 id="search"
-                className="flex-1 rounded-full px-4 text-black outline-none"
+                className="h-full flex-1 rounded-full px-4 text-black outline-none"
                 placeholder="Search...."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}

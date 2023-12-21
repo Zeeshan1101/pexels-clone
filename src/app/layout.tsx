@@ -14,6 +14,20 @@ export const metadata: Metadata = {
     metadataBase: appURL,
     title: "Pexels Clone",
     description: "Simple Image Search App",
+    openGraph: {
+        title: "Pexels Clone",
+        description: "Simple Image Search App",
+        type: "website",
+        url: appURL.href,
+        images: [
+            {
+                url: new URL("/og", appURL).href,
+                width: 1200,
+                height: 630,
+                alt: "Pexels Clone",
+            },
+        ],
+    },
 };
 
 export default function RootLayout({

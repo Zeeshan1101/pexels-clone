@@ -10,14 +10,14 @@
     --background-end-rgb: 255, 255, 255;
 }
 
-
 body {
     color: rgb(var(--foreground-rgb));
     background: linear-gradient(
             to bottom,
             transparent,
             rgb(var(--background-end-rgb))
-    ) rgb(var(--background-start-rgb));
+        )
+        rgb(var(--background-start-rgb));
 }
 
 @layer base {
@@ -26,7 +26,11 @@ body {
     }
 
     .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        font-variation-settings:
+            "FILL" 0,
+            "wght" 400,
+            "GRAD" 0,
+            "opsz" 24;
     }
 
     .images {
